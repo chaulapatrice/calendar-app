@@ -408,7 +408,7 @@ We start by creating a `calendar_app` application.
 In the `./backend` folder run the command
 
 ```
-python manage.py startapp calendar
+python manage.py startapp calendar_app
 ```
 
 Next we add it to `INSTALLED_APPS` in our `settings.py` module.
