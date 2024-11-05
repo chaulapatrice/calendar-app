@@ -29,9 +29,10 @@ In your projects directory create a new directory using the command
 
 ```bash
 mkdir bryntum-calendar-app
+cd bryntum-calendar-app
 ```
 
-We now create a virtual environment in the directory.
+We will create a virtual environment in the directory we created above.
 A virtual environment enables us to maintain our project dependencies separately from other projects and the system.
 
 Let's install `virtualenv` first
@@ -44,57 +45,57 @@ pip3 install virtualenv
 python3 -m virtualenv .venv
 ```
 
-We should also initialize a git repository and create a `.gitignore` file. In the `.gitignore` file we add `.venv`
-so that the .venv won't be added to the files tracked by git
+Now activate the virtual environment using the following command
 
 ```
-touch .gitignore
-```
-
-Edit your .gitignore file using code editor of your choice
-
-```
-.venv
-```
-
-Activate the virtual environment using the following command
-
-```bash
 source .venv/bin/activate
 ```
 
-We now install django
+Next we install Django
 
-```bash
+```
 pip install django
 ```
 
 We need to keep track of the dependencies we have installed. We do it by creating a requirements.txt file
-using the command. This is necessary for installing them in a different environment using the file.
+using the command. 
 
-```bash
+```
 pip freeze > requirements.txt
 ```
 
-Create a new project
+Next we create a new Django project
 
-```bash
+```
 django-admin startproject backend
 ```
 
-We have successfully created a new project. In the next section we will be setting up authentication
+RUn the following commands to verify our django project has been created successfully
+
+```
+cd backend 
+```
+Run the development server
+```
+python manage.py runserver
+```
+
+We have successfully created a new project. In the next section we will be setting up 
+the API and protect it using [Token Authentication](https://www.okta.com/identity-101/what-is-token-based-authentication/)
 
 ### Setup API and Authentication
 
-In this section we will be setting up authentication and the API using the
+In this section we will setup the API and authentication. We are going to use the 
 libraries [Google OAuth](https://developers.google.com/identity/protocols/oauth2), [Django Rest Framework](https://www.django-rest-framework.org)
 and [DJ Rest Auth](https://dj-rest-auth.readthedocs.io/en/latest/).
-Open your root project folder using a code editor of your choice for
+
+To get started, open your root project folder using a code editor of your choice for
 example [Visual Studio Code](https://code.visualstudio.com).
 
-In your code editor open the terminal window. If your virtual environment is not active, activate it using the command.
+In your code editor open a new terminal window. 
+If your virtual environment has not been activated automatically by your edit, activate it using the command.
 
-```base 
+```
 source .venv/bin/activate
 ```
 
@@ -102,19 +103,19 @@ Next we install and configure Django Rest Framework
 
 #### Install Django Rest Framework and Configure
 
-We install Django Rest Framework using the following command
+Install Django Rest Framework using the following command
 
-```bash
+```
 pip install djangorestframework
 ```
 
-Once again we update our requirements
+Update your requirements with command
 
-```bash 
+``` 
 pip freeze > requirements.txt
 ```
 
-We now configure Django Rest Framework. Before we jump into coding, let us examine
+Next we configure Django Rest Framework. Before we jump into coding, let us examine
 our directory structure
 
 ```
@@ -142,7 +143,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-Global settings for Django Rest Framework are kept in a single configuration dictionary named `REST_FRAMEWORK`.
+Global settings for Django Rest Framework are kept in a single configuration dictionary named `REST_FRAMEWORK` [settings](https://www.django-rest-framework.org/api-guide/settings/).
 
 Add the following to your `settings.py` module
 
@@ -157,17 +158,14 @@ REST_FRAMEWORK = {
 }
 ```
 
-In the above code `DEFAULT_PERMISSION_CLASSES` allows access to users that have logged in
-only. `DEFAULT_AUTHENTICATION_CLASSES` sets the Django Rest Framework to use a randomly generated string of characters
-to authenticate
-user. Below is an example of authorisation header
+In the above code `DEFAULT_PERMISSION_CLASSES` only allows access to users that are logged in. `DEFAULT_AUTHENTICATION_CLASSES` tells the Django Rest Framework to use a randomly generated string of characters
+to authenticate users. Below is an example of authorisation header
 
 ``` yaml
 Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4
 ```
 
-We have successfully set up our api and authentication. In the next section we set
-up [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) to allow our frontend
+We have successfully set up our Rest API and Authentication. In the next section we will setup [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) to allow our frontend
 application to communicate with the backend application.
 
 ### Setup Cross-Origin Resource Sharing (CORS)
@@ -184,13 +182,13 @@ We start by installing a dependency called django-cors-headers
 pip install django-cors-headers
 ```
 
-Once again we update our requirements.txt file
+Update your `requirements.txt` file with the command
 
 ```bash
 pip freeze > requirements.txt
 ```
 
-In our `settings.py` module we add `corsheaders` application to our `INSTALLED_APPS`
+In `settings.py` add `corsheaders` application to  `INSTALLED_APPS`.
 
 ```python
 INSTALLED_APPS = [
@@ -318,7 +316,7 @@ This is important our users will be logging in user google.
 
 We are going to add `allauth.account.middleware.AccountMiddleware` to our `MIDDLEWARE` setting in our module.
 It is placed as the last middleware. It checks if there are no dangling logins when serving html pages. In our case
-it is not necessary, but it required by django allauth. Django allauth will throw an error if it's not included.
+it is not necessary, but it is required by django allauth. Django allauth will throw an error if it's not included.
 
 ```python
 MIDDLEWARE = [
@@ -859,7 +857,7 @@ for `<str:event_id>`.
 
 The endpoints parameters in `views.py` should match the names defined here.
 
-We have completed the first part of the tutorial. Here we learned about django, django rest frameworks,
+We have completed the first part of the tutorial. Here we learned about Django, Django Rest Framework,
 Cross-Origin Resource Sharing, Google OAuth2 authentication, Python Google Client Library and Google Calendar API.
 
 In the next section we are going to build a frontend application using React.
@@ -873,7 +871,7 @@ using [React](http://react.dev), [Bryntum Calandar](https://bryntum.com/products
 [Axios](https://axios-http.com/docs/intro), [React OAuth2 | Google](https://www.npmjs.com/package/@react-oauth/google)
 and [Zustand](https://zustand.docs.pmnd.rs/getting-started/introduction).
 
-We use Axios to make ajax requests to our backend api. We use Zustand for state management. It provides a simole way
+We use Axios to make ajax requests to our backend api. We use Zustand for state management. It provides a simple way
 to manage state in a similar way we use [`useState`](https://react.dev/reference/react/useState).
 
 To build our application we are going to complete the following activities
@@ -945,7 +943,7 @@ We will use `VITE_API_BASE_URL` to configure a `baseUrl` used my axios when maki
 
 ### Add login functionality
 
-We are going to create a Zustand store to keep of our authentication state
+We are going to create a Zustand store to keep track of our authentication state
 
 Create a new directory `store` inside `src` directory. Add a new file `auth.ts` in the `store` directory.
 
@@ -1039,7 +1037,7 @@ axios.interceptors.request.use(function (config) {
 export default axios;
 ```
 
-We are whitelisting `login` endpoint because it doesn't require auhtorization.
+We are whitelisting `login` endpoint because it doesn't require authorization.
 
 We have setup Axios, next we are going to implement React OAuth2 | Google login.
 
@@ -1068,7 +1066,7 @@ Rename the file `index.css` to `index.scss` and paste in
 
 We have successfully added our google oauth provider context.
 
-To retrieve an authorisation code from google we need to replace the code in `App.tsx` with the following code
+To retrieve an authorisation code from Google we need to replace the code in `App.tsx` with the following code
 
 ```typescript jsx
 import {useGoogleLogin} from "@react-oauth/google";
@@ -1280,7 +1278,7 @@ It styles the `BryntumCalendar` component that we are going to use in the next s
 
 ### List Events
 
-To list events we need to make an ajax request to our API using axios. The endpoint requires user
+To list events we need to make an [AJAX](https://developer.mozilla.org/en-US/docs/Glossary/AJAX) request to our API using axios. The endpoint requires user
 to be logged in.
 
 We will start by adding the following import in our App.tsx file
@@ -1327,7 +1325,7 @@ interface GoogleCalendar {
 }
 ```
 
-Here we are defining our data types. Vite does strict type checking when building. Without defining data types our build
+Here we are defining our data types. Vite performs strict type checking when building. Without defining data types our build
 will
 fail. We can also use `any` type and turn off eslint [rules](https://eslint.org/docs/latest/rules/). Turning off eslint
 rules works, but it defeats the point of using Typescript.
