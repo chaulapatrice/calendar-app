@@ -1,0 +1,80 @@
+@import "@bryntum/calendar/calendar.material.css";
+
+body,
+#root {
+  margin: 0;
+  font-family: Lato, "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  width: 100vw;
+}
+
+.container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+
+  .auth-ui-container {
+    padding: 16px;
+    border-right: 1px solid #ddd;
+
+    .login-btn {
+      padding: 8px 24px 8px 50px;
+      line-height: 24px;
+      background: url(https://cdn.cdnlogo.com/logos/g/35/google-icon.svg) no-repeat;
+      background-size: 18px 18px;
+      background-position: 11px 11px;
+      background-color: #fff;
+      color: #757575;
+      font-family: Roboto, arial, sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 2px;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .25);
+      transition: background-color .218s, border-color .218s, box-shadow .218s;
+      border-color: transparent;
+      width: 100%;
+    }
+
+    .sign-out-btn {
+      padding: 8px 24px 8px 50px;
+      line-height: 24px;
+      background-color: #2196f3;
+      color: #fff;
+      font-family: Roboto, arial, sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 2px;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .25);
+      transition: background-color .218s, border-color .218s, box-shadow .218s;
+      border-color: transparent;
+      width: 100%;
+    }
+
+    .error {
+      color: red;
+      text-align: center;
+      border: 1px solid red;
+      font-weight: bolder;
+      padding: 8px;
+    }
+  }
+}
+
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  height: 100vh; /* Full width (cover the whole page) */
+  width: 100vw; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  z-index: 9999; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
