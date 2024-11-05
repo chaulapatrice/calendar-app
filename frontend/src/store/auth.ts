@@ -10,7 +10,6 @@ interface AuthState {
 const useAuthStore = create<AuthState>()(
     persist(
         (set) => ({
-            hydrated: false,
             token: null,
             signIn: (token) => {
                 set({token})
