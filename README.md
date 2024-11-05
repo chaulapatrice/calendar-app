@@ -9,6 +9,8 @@ to get started with Django is found [here](https://www.djangoproject.com/start/)
 React is
 found [here](https://react.dev/learn)
 
+A full working application for this tutorial can be found [here](https://calendar.creativewebtech.co.za/)
+
 ## Backend API
 
 In this section we will learn how to set up a Django application. We will do the following activities
