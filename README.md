@@ -340,7 +340,7 @@ cd backend
 python manage.py migrate 
 ```
 
-We have created database tables in our database. We can verify this back
+We have created database tables in our database.
 
 #### Create admin user
 
