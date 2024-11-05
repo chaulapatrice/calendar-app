@@ -57,7 +57,7 @@ Next we install Django
 pip install django
 ```
 
-We need to keep track of the dependencies we have installed. We do it by creating a requirements.txt file
+We need to keep track of the dependencies we have installed. We do it by creating a `requirements.txt` file
 using the command. 
 
 ```
@@ -70,7 +70,7 @@ Next we create a new Django project
 django-admin startproject backend
 ```
 
-RUn the following commands to verify our django project has been created successfully
+Run the following commands to verify our django project has been created successfully
 
 ```
 cd backend 
@@ -80,7 +80,7 @@ Run the development server
 python manage.py runserver
 ```
 
-We have successfully created a new project. In the next section we will be setting up 
+We successfully created a new project. In the next section we will be setting up 
 the API and protect it using [Token Authentication](https://www.okta.com/identity-101/what-is-token-based-authentication/)
 
 ### Setup API and Authentication
@@ -115,7 +115,7 @@ Update your requirements with command
 pip freeze > requirements.txt
 ```
 
-Next we configure Django Rest Framework. Before we jump into coding, let us examine
+Next we configure Django Rest Framework. But before we jump into coding, let us examine
 our directory structure
 
 ```
@@ -131,7 +131,7 @@ our directory structure
 └── requirements.txt
 ```
 
-To configure our Django Rest Framework we need to update `settings.py` module to include Django Rest Framework settings.
+To configure Django Rest Framework we need to update `settings.py` module to include it in the settings.
 
 Add `rest_framework` and `rest_framework.authtoken` to your `INSTALLED_APPS` setting.
 
@@ -143,7 +143,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-Global settings for Django Rest Framework are kept in a single configuration dictionary named `REST_FRAMEWORK` [settings](https://www.django-rest-framework.org/api-guide/settings/).
+Global settings for Django Rest Framework are kept in a single configuration dictionary named [`REST_FRAMEWORK`](https://www.django-rest-framework.org/api-guide/settings/).
 
 Add the following to your `settings.py` module
 
@@ -158,14 +158,14 @@ REST_FRAMEWORK = {
 }
 ```
 
-In the above code `DEFAULT_PERMISSION_CLASSES` only allows access to users that are logged in. `DEFAULT_AUTHENTICATION_CLASSES` tells the Django Rest Framework to use a randomly generated string of characters
+In the above code `DEFAULT_PERMISSION_CLASSES` only allows access to users that are logged in. `DEFAULT_AUTHENTICATION_CLASSES` tells Django Rest Framework to use a randomly generated string of characters
 to authenticate users. Below is an example of authorisation header
 
 ``` yaml
 Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4
 ```
 
-We have successfully set up our Rest API and Authentication. In the next section we will setup [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) to allow our frontend
+We successfully set up our API and Authentication. In the next section we will setup [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) to allow our frontend
 application to communicate with the backend application.
 
 ### Setup Cross-Origin Resource Sharing (CORS)
@@ -176,7 +176,7 @@ Our backend API will be running on http://localhost:8000 and frontend applicatio
 on http://localhost:5173.
 We need to allow our frontend application to make requests to the backend API.
 
-We start by installing a dependency called django-cors-headers
+We start by installing a dependency called `django-cors-headers`
 
 ```bash
 pip install django-cors-headers
@@ -209,7 +209,7 @@ MIDDLEWARE = [
 ]
 ```
 
-We now add origins that we want to allow make requests. In our case it is `http://localhost:5173`.
+We now add origins that we want to allow to make requests. In our case it is `http://localhost:5173`.
 
 ```python
 CORS_ALLOWED_ORIGINS = [
@@ -217,18 +217,18 @@ CORS_ALLOWED_ORIGINS = [
 ]
 ```
 
-We have successfully configured Cross-Origin Resource Sharing (CORS) for our backend and frontend to
+We successfully configured Cross-Origin Resource Sharing (CORS) for our backend and frontend to
 communicate with each other. In the next section we will be setting
 up [Google OAuth2](https://developers.google.com/identity/protocols/oauth2) login.
 
-### Setup Google OAuth2
+### Setup Google OAuth 2.0 Authentication and Authorization
 
-To set up google oauth2 will need the
+To set up Google Oauth 2.0 authentication and authorization will need the
 dependencies [django-allauth](https://docs.allauth.org/en/latest/), [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/latest/)
-and [python-dotenv](https://pypi.org/project/python-dotenv/). We use `dj-rest-auth` to allow users to register and login
+and [python-dotenv](https://pypi.org/project/python-dotenv/). We use `dj-rest-auth` to allow users to register, obtain permissions and login
 using their
-google account. `dj-rest-auth` is built on top of [django-allauth](https://docs.allauth.org/en/latest/) which has
-already implemented Google OAuth2 registration. You can learn more about
+Google Account. `dj-rest-auth` is built on top of [django-allauth](https://docs.allauth.org/en/latest/) which has
+already implemented Google OAuth 2.0 authentication and authorization. You can learn more about
 it [here](https://docs.allauth.org/en/dev/socialaccount/providers/google.html).
 
 We use `python-dotenv` to load enviroment variables from a `.env` file.
@@ -262,9 +262,9 @@ INSTALLED_APPS = [
 ]
 ```
 
-We are adding `allauth` applications alongside `dj_rest_auth` applications because `dj_rest_auth` is just an abstraction
+We are adding `allauth` applications alongside `dj_rest_auth` applications because `dj_rest_auth` is an abstraction
 layer on top of
-`django-allauth`. Underneath it is `django-allauth` that handles social acoount login using Google OAuth2.
+`django-allauth`. Underneath it is `django-allauth` that handles social account login using Google OAuth2.
 
 Next we configure `allauth.socialaccount.providers.google` to save `refresh_token` and `access_token` from Google
 
@@ -365,9 +365,9 @@ We need to configure our social application in the database. We start by running
 python manage.py runserver 
 ```
 
-Next we need to set up Google Consent Screen and create Google OAuth2 credentials for a web application.
+Next we need to set up Google Consent Screen and create Google OAuth 2.0 credentials for a web application.
 
-Follow the steps below to set up Google Consent Screen and create Google OAuth2 credentials
+Follow the steps below to set up Google Consent Screen and create Google OAuth 2.0 credentials
 
 1. If you don't have one, set up a Google Cloud project using
    this [guide](https://developers.google.com/workspace/guides/create-project).
@@ -522,7 +522,7 @@ that we are going to use to access [Google Calendar API](https://developers.goog
 
 Before we add our endpoints we need to configure `GOOGLE_OAUTH_CLIENT_ID` and `GOOGLE_AOUTH_CLIENT_SECRET` environment
 variables.
-We will use to refresh users' access tokesns.
+We will use to refresh users' access tokens.
 
 #### Configure environment variables
 
@@ -575,7 +575,7 @@ GOOGLE_AOUTH_CLIENT_SECRET = os.environ.get('GOOGLE_AOUTH_CLIENT_SECRET')
 #### Define API exceptions
 
 When an error happens on our API we need to return a response with an appropriate status code.
-TO achieve this we create subclasses of `rest_framework.exceptions.APIException` class and define
+To achieve this we create subclasses of `rest_framework.exceptions.APIException` class and define
 status codes and default messages
 
 Create a new module `exceptions.py` in the folder `./backend/calendar_app`  and the code
@@ -708,7 +708,7 @@ def list_calendar_events(request: Request) -> Response:
     })
 ```
 
-In the code above we define a Django Restframework API view by adding a decoractor `@decorators.api_view(['GET'])`
+In the code above we define a Django Rest Framework API view by adding a decorator `@decorators.api_view(['GET'])`
 which allows it to only accept `GET` requests.
 
 In the view we have created a service that makes http requests to `calendar/v3` endpoint. It uses the access token used
@@ -776,14 +776,14 @@ def edit_event(
                 body=request.data)
         .execute()
 
-except HttpError as error:
-raise InternalServerError(str(error))
-finally:
-service.close()
+   except HttpError as error:
+        raise InternalServerError(str(error))
+   finally:
+        service.close()
 
-return Response({
-    'detail': 'Event edited',
-})
+   return Response({
+       'detail': 'Event edited',
+   })
 ```
 
 The endpoint for updating events accepts only `PUT` requests. It takes parameters
@@ -1593,7 +1593,7 @@ with
 ```
 
 ## Conclusion
-We have managed to setup our API using Django Restframework. We secured our API using DJ Rest Auth, Django Allauth, Google OAuth. We used Python Google API Client
+We have managed to setup our API using Django Rest Framework. We secured our API using DJ Rest Auth, Django Allauth, Google OAuth. We used Python Google API Client
 to list, create, update and delete events on Calendar API. 
 
 We created a frontend application using React, Bryntum Calendar, Zustand, Axios and React OAuth2 | Google. Our application allows users to 
