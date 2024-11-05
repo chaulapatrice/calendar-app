@@ -365,7 +365,7 @@ We need to configure our social application in the database. We start by running
 python manage.py runserver 
 ```
 
-First we need to set up Google Consent Screen and create Google OAuth2 credentials for a web application.
+Next we need to set up Google Consent Screen and create Google OAuth2 credentials for a web application.
 
 Follow the steps below to set up Google Consent Screen and create Google OAuth2 credentials
 
