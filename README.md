@@ -1611,12 +1611,12 @@ To test these features we need both backend and frontend running.
 To run backend application from your root directory run the command 
 
 ```
-cd backend and python manage.py runserver 
+cd backend && python manage.py runserver 
 ```
 
 To run frontend application form your root directory run the command 
 ```
-cd frontend and npm run dev
+cd frontend && npm run dev
 ```
 
 Open the url http://localhost:5173 and the test the features in the list above.
