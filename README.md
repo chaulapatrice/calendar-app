@@ -1606,6 +1606,32 @@ We created a frontend application using React, Bryntum Calendar, Zustand, Axios 
 4. Create events
 5. Update events
 
+To test these features we need both backend and frontend running.
+
+To run backend application from your root directory run the command 
+
+```
+cd backend and python manage.py runserver 
+```
+
+To run frontend application form your root directory run the command 
+```
+cd frontend and npm run dev
+```
+
+Open the url http://localhost:5173 and the test the features in the list above.
+
+We have successfuly created a full stack Bryntum Calendar application.
+
+Below are the links to learn more on some of the technologies we used 
+
+1. [Django](https://djangoproject.com)
+2. [Django Rest Framework](https://www.django-rest-framework.org/)
+3. [DJ Rest Auth](https://dj-rest-auth.readthedocs.io/en/latest/)
+4. [Google OAuth 2.0](https://developers.google.com/identity/protocols/oauth2)
+4. [React](https://react.dev)
+5. [Zustand](https://zustand.docs.pmnd.rs/getting-started/introduction)
+6. [Axios](https://axios-http.com/docs/intro)
 
 
 
