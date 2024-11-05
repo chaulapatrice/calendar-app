@@ -1447,7 +1447,7 @@ const createEvent = async (calendarId: string, payload: object) => {
   };
 ```
 In the code above we are making a `POST` request to `/events/<str:calendar_id>/create/` endpoint we create in the API.
-We enoode the `calendaId` because some calendars can have an id like `foo#bar`. If we don't encode, it will break 
+We encode the `calendaId` because some calendars can have an id like `foo#bar`. If we don't encode, it will break 
 Django's URL scheme. 
 
 We have defined our utility functionality. Next we define our event handler 
@@ -1504,7 +1504,7 @@ You will the event has been added on the UI, but we need to verify that it has s
 5. Reload the page 
 6. If the event still shows then it has synced to google. 
 
-You can double check on your Google Calendar. 
+You can  double check on your Google Calendar. 
 
 We have successfully added code to sync events. Next we add code to update events 
 
