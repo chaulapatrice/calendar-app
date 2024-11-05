@@ -974,7 +974,6 @@ Next we create our store hook. Add the following code to `auth.ts`
 const useAuthStore = create<AuthState>()(
     persist(
         (set) => ({
-            hydrated: false,
             token: null,
             signIn: (token) => {
                 set({token})
@@ -1061,8 +1060,6 @@ createRoot(document.getElementById("root")!).render(
 The code above adds `GoogleOAuthProvider` [context](https://react.dev/reference/react/createContext) that
 uses `clientId`
 we defined in our environment variables.
-
-Rename the file `index.css` to `index.scss` and paste in
 
 We have successfully added our google oauth provider context.
 
