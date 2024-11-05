@@ -1594,7 +1594,17 @@ with
           }
 ```
 
+## Conclusion
+We have managed to setup our API using Django Restframework. We secured our API using DJ Rest Auth, Django Allauth, Google OAuth. We used Python Google API Client
+to list, create, update and delete events on Calendar API. 
 
+We created a frontend application using React, Bryntum Calendar, Zustand, Axios and React OAuth2 | Google. Our application allows users to 
+
+1. Login using their google account
+2. List calendars
+3. List events
+4. Create events
+5. Update events
 
 
 
