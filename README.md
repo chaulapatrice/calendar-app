@@ -1151,7 +1151,7 @@ export default App;
 ```
 
 In the code above we call `useGoogleLogin` function that returns
-a function. We are going to use to open google login page.
+a function. We are going to use it to open google login page.
 
 Run the application with the command
 
@@ -1159,7 +1159,7 @@ Run the application with the command
 npm run dev 
 ```
 
-Open a new terminal, activate your virtual environment and run the backend with the command
+Open a new terminal, activate your virtual environment if it's not active. Run the backend with the command
 
 ```
 cd backend && python manage.py runserver 
