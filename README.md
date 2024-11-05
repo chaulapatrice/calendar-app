@@ -739,14 +739,14 @@ def create_event(request: Request, calendar_id: str | None = None) -> Response:
         .insert(calendarId=calendarId, body=request.data)
         .execute()
 
-except HttpError as error:
-raise InternalServerError(str(error))
-finally:
-service.close()
-
-return Response({
-    'detail': 'Event created',
-}, status=status.HTTP_201_CREATED)
+   except HttpError as error:
+        raise InternalServerError(str(error))
+   finally:
+        service.close()
+   
+   return Response({
+       'detail': 'Event created',
+   }, status=status.HTTP_201_CREATED)
 ```
 
 The endpoint for creating events accepts only `POST` requests. It takes in a parameter
@@ -811,14 +811,14 @@ def delete_event(
         .delete(calendarId=calendarId, eventId=event_id)
         .execute()
 
-except HttpError as error:
-raise InternalServerError(str(error))
-finally:
-service.close()
-
-return Response({
-    'detail': 'Event deleted',
-})
+   except HttpError as error:
+       raise InternalServerError(str(error))
+   finally:
+       service.close()
+   
+   return Response({
+       'detail': 'Event deleted',
+   })
 ```
 
 The endpoint for deleting events accepts only `DELETE` requests. It takes parameters
