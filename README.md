@@ -394,7 +394,7 @@ After completing the above steps take the following steps to create a social app
 
 In this section we are going to create a django application `calendar_app` and add it to installed applications.
 We are going to add a Google login endpoint. The endpoint receives a `code` from the frontend application and
-exhanges it for `refresh_token` and `access_token`. The `access_token` is used to access user data, apis.
+exhanges it for `refresh_token` and `access_token`. The `access_token` is used to access user data and apis.
 
 We will use it to access the calendar api to Create, Read, Update and Delete (CRUD) events.
 
