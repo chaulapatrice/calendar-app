@@ -359,7 +359,7 @@ python manage.py createsuperuser
 
 Enter your user details as follows
 
-```
+```bash
 (.venv) ~/bryntum-calendar-app/backend
 python manage.py createsuperuser
 Username (leave blank to use 'patrice'): admin
