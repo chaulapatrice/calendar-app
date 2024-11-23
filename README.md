@@ -37,7 +37,7 @@ A virtual environment enables us to maintain our project dependencies separately
 
 Let's install `virtualenv` first
 
-```
+```bash
 pip3 install virtualenv
 ```
 
@@ -47,36 +47,36 @@ python3 -m virtualenv .venv
 
 Now activate the virtual environment using the following command
 
-```
+```bash
 source .venv/bin/activate
 ```
 
 Next we install Django
 
-```
+```bash
 pip install django
 ```
 
 We need to keep track of the dependencies we have installed. We do it by creating a `requirements.txt` file
 using the command. 
 
-```
+```bash
 pip freeze > requirements.txt
 ```
 
 Next we create a new Django project
 
-```
+```bash
 django-admin startproject backend
 ```
 
 Run the following commands to verify our django project has been created successfully
 
-```
+```bash
 cd backend 
 ```
 Run the development server
-```
+```bash
 python manage.py runserver
 ```
 
@@ -95,7 +95,7 @@ example [Visual Studio Code](https://code.visualstudio.com).
 In your code editor open a new terminal window. 
 If your virtual environment has not been activated automatically by your edit, activate it using the command.
 
-```
+```bash
 source .venv/bin/activate
 ```
 
@@ -105,20 +105,20 @@ Next we install and configure Django Rest Framework
 
 Install Django Rest Framework using the following command
 
-```
+```bash
 pip install djangorestframework
 ```
 
 Update your requirements with command
 
-``` 
+```bash 
 pip freeze > requirements.txt
 ```
 
 Next we configure Django Rest Framework. But before we jump into coding, let us examine
 our directory structure
 
-```
+```bash
 ./
 ├── backend
 │   ├── backend
@@ -279,7 +279,7 @@ The refreshing of access tokens is
 handled by [google-oauth](https://google-auth.readthedocs.io/en/master/index.html) library
 class [Credentials](https://google-auth.readthedocs.io/en/master/reference/google.oauth2.credentials.html).
 
-```
+```bash
 SOCIALACCOUNT_STORE_TOKENS = True
 ```
 
@@ -335,7 +335,7 @@ to `INSTALLED_APPS` in `settings.py` module.
 
 We run the migrations using the following command
 
-```
+```bash
 cd backend 
 python manage.py migrate 
 ```
@@ -348,7 +348,7 @@ No we are going to create an admin user. We will login on http://localhost:8000/
 application.
 Inside `./backend` folder run the command
 
-```
+```bash
 python manage.py createsuperuser
 ```
 
@@ -371,7 +371,7 @@ We have created our database tables and created a superuser. Now we are ready to
 
 We need to configure our social application in the database. We start by running our django server.
 
-```
+```bash
 python manage.py runserver 
 ```
 
@@ -417,7 +417,7 @@ class [Credentials](https://google-auth.readthedocs.io/en/master/reference/googl
 We start by creating a `calendar_app` application.
 In the `./backend` folder run the command
 
-```
+```bash
 python manage.py startapp calendar_app
 ```
 
@@ -435,7 +435,7 @@ INSTALLED_APPS = [
 Let's examine our folder structure again. Now we have a new directory `calendar_app` with the following files and
 directories.
 
-```
+```bash
 .
 ├── backend
 │   ├── backend
@@ -521,7 +521,7 @@ Without including it the `GoogleLogin` view will throw a missing url error.
 In this section we will add list, create, update and delete event endpoints.
 Let's start by installing the required dependencies to work with google api
 
-```
+```bash
 pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
 ```
 
@@ -900,13 +900,13 @@ There are many ways to set up a React application.
 For this project we will use [Vite](https://vite.dev/) with [Typescript](https://www.typescriptlang.org/). In
 the root folder of your project run the following command
 
-```
+```bash
 npm create vite@latest frontend -- --template react-ts
 ```
 
 Once the project is created, install the node modules
 
-```
+```bash
 cd frontend
 npm install && npm install sass --save-dev
 ```
@@ -925,13 +925,13 @@ this [guide](https://bryntum.com/products/calendar/docs/guide/Calendar/npm-repos
 
 Now you can install the package using the following command
 
-```
+```bash
 npm install @bryntum/calendar@npm:@bryntum/calendar-trial @bryntum/calendar-react
 ```
 
 #### Install Axios, React OAuth2 | Google and Zustand dependencies
 
-```
+```bash
 npm install axios @react-oauth/google zustand
 ```
 
@@ -1162,13 +1162,13 @@ a function. We are going to use it to open google login page.
 
 Run the application with the command
 
-```
+```bash
 npm run dev 
 ```
 
 Open a new terminal, activate your virtual environment if it's not active. Run the backend with the command
 
-```
+```bash
 cd backend && python manage.py runserver 
 ```
 
@@ -1615,12 +1615,12 @@ To test these features we need both backend and frontend running.
 
 To run backend application from your root directory run the command 
 
-```
+```bash
 cd backend && python manage.py runserver 
 ```
 
 To run frontend application form your root directory run the command 
-```
+```bash
 cd frontend && npm run dev
 ```
 
