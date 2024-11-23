@@ -352,8 +352,18 @@ Inside `./backend` folder run the command
 python manage.py createsuperuser
 ```
 
-Enter your user details as illustrated in the image below
-![img.png](tutorial/images/createsuperuser.png)
+Enter your user details as follows
+```
+(.venv) ~/bryntum-calendar-app/backend
+python manage.py createsuperuser
+Username (leave blank to use 'patrice'): admin
+Email address: admin@creativewebtech.co.za
+Password:
+Password (again):
+Superuser created successfully.
+
+(.venv) ~/bryntum-calendar-app/backend
+```
 
 We have created our database tables and created a superuser. Now we are ready to configure Google social application.
 
